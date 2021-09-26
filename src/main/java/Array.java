@@ -21,21 +21,23 @@ public class Array {
 
 //        System.out.format("Sum = %d\n", sumElements(arr));
 
-        if (isAllEven(arr)){
+        if (isAllEven(arr)) {
             System.out.println("Mang chan");
-        }else
+        } else
             System.out.println("Mang ko chan");
 
-//        sortArrayAsc(arr);
+        sortArrayAsc(arr);
 //        printArray(arr);
 
-
+// Lap xuoi (Min -> Max)
 //        for (int i : arr) {
 //            System.out.format("%d, ", i);
 //        }
-//        for (int i = arr.length - 1; i >= 0; i--) {
-//            System.out.format("%d, ", arr[i]);
-//        }
+
+        // Lap nguoc (Max -> Min)
+        for (int i = arr.length - 1; i >= 0; i--) {
+            System.out.format("%d, ", arr[i]);
+        }
 
 
     }
@@ -74,19 +76,20 @@ public class Array {
             }
         }
     }
-// Ham phat sinh ramdom so trong mang
+
+    // Ham phat sinh ramdom so trong mang
     public static int[] generateArray(int n, int min, int max) {
         int[] ret = new int[n];
 
         for (int i = 0; i < ret.length; i++) {
-            ret[i] = (int)Math.floor(Math.random() * (max-min)) + min;
+            ret[i] = (int) Math.floor(Math.random() * (max - min)) + min;
 
         }
-        return  ret;
+        return ret;
     }
 
     // Ham kiem tra tinh chat dung sai (so le)
-    public static boolean isAllEven(int[] arr){
+    public static boolean isAllEven(int[] arr) {
         boolean ret = false;
         for (int n : arr) {
             if (n % 2 != 0) {
