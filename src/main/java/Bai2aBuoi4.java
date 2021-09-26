@@ -9,6 +9,7 @@ public class Bai2aBuoi4 {
         int s2a = sum2a(n);
         System.out.format("Sum (2a) = %d\n", s2a);
     }
+
     public static int sum2a(int n) {
         int s = 0;
         for (int i = 1; i <= n; i++) {
@@ -17,4 +18,5 @@ public class Bai2aBuoi4 {
         }
         return s;
     }
+
 }
