@@ -19,10 +19,15 @@ public class Array {
         int[] arr = generateArray(20, -50, 50);
         printArray(arr);
 
-        printArray(arr);
-        System.out.format("Sum = %d\n", sumElements(arr));
-        sortArrayAsc(arr);
-        printArray(arr);
+//        System.out.format("Sum = %d\n", sumElements(arr));
+
+        if (isAllEven(arr)){
+            System.out.println("Mang chan");
+        }else
+            System.out.println("Mang ko chan");
+
+//        sortArrayAsc(arr);
+//        printArray(arr);
 
 
 //        for (int i : arr) {
@@ -78,5 +83,18 @@ public class Array {
 
         }
         return  ret;
+    }
+
+    // Ham kiem tra tinh chat dung sai (so le)
+    public static boolean isAllEven(int[] arr){
+        boolean ret = false;
+        for (int n : arr) {
+            if (n % 2 != 0) {
+                return false;
+//                ret = false;
+//                break;
+            }
+        }
+        return true;
     }
 }
