@@ -19,14 +19,39 @@ public class Array {
         int[] arr = generateArray(20, -50, 50);
         printArray(arr);
 
-//        System.out.format("Sum = %d\n", sumElements(arr));
+        System.out.format("Sum = %d\n", sumElements(arr));
 
-        if (isAllEven(arr)) {
-            System.out.println("Mang chan");
-        } else
-            System.out.println("Mang ko chan");
+//        if (isAllEven(arr)) {
+//            System.out.println("Mang chan");
+//        } else
+//            System.out.println("Mang ko chan");
 
-        sortArrayAsc(arr);
+        System.out.format("Max = %d\n", findMax(arr));
+        System.out.format("Min = %d\n", findMin(arr));
+        int maxIdx = findMaxIndex(arr);
+        System.out.format("Max = %d, Index = %d\n", arr[maxIdx], maxIdx);
+
+        int firstNegIdx = findFirstNegativeIndex(arr);
+        if (firstNegIdx >= 0) {
+            System.out.format("FirstNegative = %d, Index = %d\n", arr[firstNegIdx], firstNegIdx);
+        }else System.out.println("khong co phan tu am");
+
+        int lastPosIdx = findLastPositiveIndex(arr);
+        if (lastPosIdx >= 0) {
+            System.out.format("LastPositive = %d, Index = %d\n", arr[lastPosIdx], lastPosIdx);
+        }else System.out.println("khong co phan tu duong");
+
+        int minPosIdx = findMinPositiveIndex(arr);
+        if (minPosIdx >= 0) {
+            System.out.format("minPosIdx = %d, Index = %d\n", arr[minPosIdx], minPosIdx);
+        }else System.out.println("khong co phan tu duong");
+
+        int maxNegIdx = findMaxNegativeIndex(arr);
+        if (maxNegIdx >= 0) {
+            System.out.format("maxNegative = %d, Index = %d\n", arr[maxNegIdx], maxNegIdx);
+        }else System.out.println("khong co phan tu duong");
+
+//        sortArrayAsc(arr);
 //        printArray(arr);
 
 // Lap xuoi (Min -> Max)
@@ -34,11 +59,10 @@ public class Array {
 //            System.out.format("%d, ", i);
 //        }
 
-        // Lap nguoc (Max -> Min)
-        for (int i = arr.length - 1; i >= 0; i--) {
-            System.out.format("%d, ", arr[i]);
-        }
-
+//        // Lap nguoc (Max -> Min)
+//        for (int i = arr.length - 1; i >= 0; i--) {
+//            System.out.format("%d, ", arr[i]);
+//        }
 
     }
 
@@ -99,5 +123,99 @@ public class Array {
             }
         }
         return true;
+    }
+
+    // Max in Array
+    public static int findMax(int[] arr) {
+        int max = arr[0];
+
+        for (int i = 1; i < arr.length; i++){
+            if (arr[i] > max){
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+// tim so lon nhat va vi tri cua so do trong mang
+    public static int findMaxIndex(int[] arr){
+        int idx = 0;
+        for (int i = 1; i < arr.length; i++){
+            if(arr[i] > arr[idx]){
+                idx = i;
+            }
+        }
+
+        return idx;
+    }
+
+// tim phan tu am dau tien
+    public static int findFirstNegativeIndex(int[] arr){
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] < 0){
+                return i;
+            }
+        }
+
+        return -1; // khong co pha \n tu am
+    }
+    // **tim so duong dau tien tu cuoi len
+//    public static int findLastPositiveIndex(int[] arr){
+//
+//        for (int i = arr.length-1; i >=0 ; i--){
+//            if (arr[i] > 0 ){
+//                return i;
+//            }
+//        }
+//        return -1;
+//    }
+
+    //** tim so duong dau tien tu cuoi len dung break **
+    public static int findLastPositiveIndex(int[] arr){
+        int idx = -1;
+
+        for (int i = arr.length-1; i >=0 ; i--){
+            if (arr[i] > 0 ){
+                idx = i;
+                break;
+            }
+        }
+        return idx;
+    }
+
+// Tim so duong nho nhat trong mang
+    public static int findMinPositiveIndex(int[] arr){
+        int lastPosIdx = findLastPositiveIndex(arr);
+        if (lastPosIdx < 0 ){
+           return -1;
+       }
+        int minPosIdx = lastPosIdx;
+        for (int i = 0; i< arr.length; i++){
+           if (arr[i] > 0 && arr[i] < arr[minPosIdx]){
+               minPosIdx = i;
+           }
+       }
+        return minPosIdx;
+    }
+
+    public static int findMaxNegativeIndex(int[] arr){
+        int maxNegIdx = -1;
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] < 0 && (maxNegIdx == -1 || arr[i] > arr[maxNegIdx])){
+                maxNegIdx = i;
+            }
+        }
+        return maxNegIdx;
+    }
+    //Min in Array
+    public static int findMin(int[] arr) {
+        int min = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
     }
 }
